@@ -1,0 +1,41 @@
+# Built application files
+*.apk
+*.ap_
+
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Mac OS X clutter
+*.DS_Store
+
+# Windows clutter
+Thumbs.db
+
+# Log Files
+*.log
+
+# Eclipse Generated Files
+proguard/
+.metadata/
+.classpath
+.project
+
+# Android Studio Generated files
+.idea
+*.iml
+/captures
+
