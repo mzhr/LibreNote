@@ -11,11 +11,16 @@
 
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/main_activity_title">
+            android:label="@string/main_activity_title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.TextNoteActivity"
+            android:label="@string/text_note_activity_title">
         </activity>
 
     </application>

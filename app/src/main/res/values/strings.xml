@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">LibreNote</string>
     <string name="main_activity_title">Notes</string>
+    <string name="text_note_activity_title">New Note</string>
     <string name="new_note_button">Add Note</string>
+    <string name="set_note_name">Set Note Title</string>
+    <string name="text_note_field_default">Insert text here...</string>
 </resources>
