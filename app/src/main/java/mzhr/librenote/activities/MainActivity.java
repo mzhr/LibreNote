@@ -27,34 +27,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        updateFileList();
+    }
 
+    public void newTextNote(View view) {
+        /* When activated create new view for creating a text note. */
+        Intent newIntent = new Intent(MainActivity.this, TextNoteActivity.class);
+        startActivityForResult(newIntent, 1);
+        updateFileList();
+    }
+
+    public void updateFileList() {
         noteList = (ListView)findViewById(R.id.noteList);
+        NoteStorage noteStorage = new NoteStorage();
+        String[] files = noteStorage.getNotes(getApplicationContext());
         noteNameList = new ArrayList<String>();
 
-        /* Get all file names */
-        NoteStorage noteStorage = new NoteStorage();
+        /* Get all file names. */
         String[] noteNameArray = noteStorage.getNotes(getApplicationContext());
         for (String name: noteNameArray) {
             noteNameList.add(name);
         }
+
+        /* Set Adapters. */
         noteAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noteNameList);
-
         noteList.setAdapter(noteAdapter);
-        setupNoteListener();
     }
 
-    public void newTextNote(View view) {
-        Intent newIntent = new Intent(MainActivity.this, TextNoteActivity.class);
-        startActivity(newIntent);
-    }
-
-    public void updateFileList() {
-        NoteStorage noteStorage = new NoteStorage();
-        String[] files = noteStorage.getNotes(getApplicationContext());
-
-    }
-
-    private void setupNoteListener() {
-        /* asdsad */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            updateFileList();
+        }
     }
 }

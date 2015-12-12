@@ -1,5 +1,7 @@
 package mzhr.librenote.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
@@ -24,30 +26,41 @@ public class TextNoteActivity extends AppCompatActivity {
     {
         /* Get string value of content of text note from view. */
         NoteStorage noteStorage = new NoteStorage();
-        EditText noteText = (EditText)findViewById(R.id.editText);
+        EditText noteText = (EditText)findViewById(R.id.textNoteValue);
+        EditText noteName = (EditText)findViewById(R.id.textNoteTitle);
         String noteValue = noteText.getText().toString();
-
-        try {
-            noteStorage.createTextNote(getApplicationContext(), "librenote.txt", noteValue);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String noteTitle = noteName.getText().toString();
 
         /* Save file if file of name given doesn't exist otherwise give user option
          * to try again with another filename.
-         *
+         */
+        int failCount = 0;
+        boolean failed = false;
         while (true) {
-            /* Create popup for filename.
             try {
-                noteStorage.createTextNote(getApplicationContext(), noteValue, "asdasd");
+                /* If file creation has failed before then create a new file with a duplication value on the end of title. */
+                if (failed == true) {
+                    noteStorage.createTextNote(getApplicationContext(), noteTitle + " (" + failCount + ")" , noteValue);
+                } else {
+                    noteStorage.createTextNote(getApplicationContext(), noteTitle, noteValue);
+                }
                 break;
-            } catch (IOException e) {
+            } catch (Exception e) {
+                /* If failed, error, attempt loop again except add file number at end. */
+                if (failed == true) {
+                    failCount++;
+                } else {
+                    failed = true;
+                }
+                e.printStackTrace();
                 continue;
             }
         }
-        */
+
+        /* Notify parent activity that this activity finished. Used for updated note page. */
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_CANCELED, returnIntent);
 
         super.onBackPressed();
-
     }
 }
