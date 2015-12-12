@@ -14,7 +14,7 @@ public class NoteStorage {
     {
         try {
             context.openFileInput(name);
-            throw new Exception("File Already Exists");
+            throw new Exception("Cannot create file. File with same name already exists.");
         } catch (IOException exist_e) {
             FileOutputStream outputStream;
             try {

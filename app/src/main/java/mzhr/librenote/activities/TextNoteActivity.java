@@ -28,7 +28,7 @@ public class TextNoteActivity extends AppCompatActivity {
         String noteValue = noteText.getText().toString();
 
         try {
-            noteStorage.createTextNote(getApplicationContext(), noteValue, "librenote.txt");
+            noteStorage.createTextNote(getApplicationContext(), "librenote.txt", noteValue);
         } catch (Exception e) {
             e.printStackTrace();
         }
