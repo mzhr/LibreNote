@@ -24,15 +24,20 @@
         android:id="@+id/scrollView"
         android:layout_below="@+id/textNoteTitle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true">
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:hint="@string/text_note_field_default"
-            android:ems="10"
-            android:id="@+id/textNoteValue"/>
     </ScrollView>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="@string/text_note_field_default"
+        android:ems="10"
+        android:id="@+id/textNoteValue"
+        android:layout_below="@+id/textNoteTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
