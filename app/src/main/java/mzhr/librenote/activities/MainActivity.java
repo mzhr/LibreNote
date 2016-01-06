@@ -3,10 +3,13 @@ package mzhr.librenote.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -57,8 +60,39 @@ public class MainActivity extends AppCompatActivity {
                 editTextNote(view, noteNameList.get(position));
             }
         });
+        /* Setup Listener to show a popup menu for deleting the file. */
+        noteList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                showListItemPopup(view, noteNameList.get(position));
+                return true;
+            }
+        });
     }
 
+    private void showListItemPopup(View view, final String fileName) {
+        /* Function for a popup menu when an item is selected, currently shows a delete. */
+        PopupMenu popup = new PopupMenu(this, view);
+        /* Inflate menu from XML file. */
+        popup.getMenuInflater().inflate(R.menu.popup_notelist, popup.getMenu());
+        /* Setup Listener for menu item selection. */
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_listitem_delete:
+                        /* Remove hardcoded lable. */
+                        NoteStorage storage = new NoteStorage();
+                        storage.removeTextNote(getApplicationContext(), fileName);
+                        updateFileList();
+                        Toast.makeText(MainActivity.this, "Deleted " + fileName, Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return false;
+            }
+        });
+        popup.show();
+    }
 
     public void newTextNote(View view) {
         /* When activated create new view for creating a text note. */
