@@ -4,6 +4,6 @@
     <string name="text_note_activity_title">New Note</string>
     <string name="new_note_button">Add Note</string>
     <string name="set_note_name">Set Note Title</string>
-    <string name="text_note_field_default">Insert text here...</string>
-    <string name="text_note_title_default">New Note</string>
+    <string name="text_note_field_default">Start writing...</string>
+    <string name="text_note_title_default">Add Title...</string>
 </resources>

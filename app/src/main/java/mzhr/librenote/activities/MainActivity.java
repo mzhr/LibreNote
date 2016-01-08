@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showListItemPopup(View view, final String fileName) {
-        /* Function for a popup menu when an item is selected, currently shows a delete. */
+        /* Function for a popup menu when an item is selected, currently shows a delete.
+         * Later change to action mode for more polish. */
         PopupMenu popup = new PopupMenu(this, view);
         /* Inflate menu from XML file. */
         popup.getMenuInflater().inflate(R.menu.popup_notelist, popup.getMenu());
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_listitem_delete:
-                        /* Remove hardcoded lable. */
+                        /* Delete file of given file name and create toast to notify user. */
                         NoteStorage storage = new NoteStorage();
                         storage.removeTextNote(getApplicationContext(), fileName);
                         updateFileList();

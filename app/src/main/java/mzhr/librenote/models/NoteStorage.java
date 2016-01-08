@@ -13,7 +13,7 @@ import java.io.OutputStreamWriter;
 /**
  * Class for processing file accessing, creation, deletion and editing.
  */
-public class NoteStorage {
+public class  NoteStorage {
 
     public String[] getNotes(Context context)
     {
