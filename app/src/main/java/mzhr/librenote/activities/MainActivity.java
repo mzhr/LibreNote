@@ -3,6 +3,7 @@ package mzhr.librenote.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         updateFileList();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mainactivity_actionbar, menu);
+        return true;
     }
 
     public void updateFileList() {
@@ -75,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
          * Later change to action mode for more polish. */
         PopupMenu popup = new PopupMenu(this, view);
         /* Inflate menu from XML file. */
-        popup.getMenuInflater().inflate(R.menu.popup_notelist, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.mainactivity_itemselect, popup.getMenu());
         /* Setup Listener for menu item selection. */
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -109,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(newIntent, 1);
         updateFileList();
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

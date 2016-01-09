@@ -6,4 +6,9 @@
     <string name="set_note_name">Set Note Title</string>
     <string name="text_note_field_default">Start writing...</string>
     <string name="text_note_title_default">Add Title...</string>
+    <string name="actionbar_settings">Actionbar Settings</string>
+    <string name="settings_settings">Settings</string>
+    <string name="settings_import">Import Notes</string>
+    <string name="settings_export">Export Notes</string>
+    <string name="select_delete">Delete</string>
 </resources>
