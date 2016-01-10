@@ -14,7 +14,7 @@ public class ChangelogActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settingslist);
+        setContentView(R.layout.activity_list);
 
         ListView changelogList = (ListView)findViewById(R.id.settingsList);
         ArrayList<String> changelogWordList = new ArrayList<String>();

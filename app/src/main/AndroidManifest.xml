@@ -36,14 +36,6 @@
             android:name=".activities.ChangelogActivity"
             android:label="@string/changelog_activity_title" >
         </activity>
-        <activity
-            android:name=".activities.LicenseActivity"
-            android:label="@string/license_activity_title" >
-        </activity>
-        <activity
-            android:name=".activities.SourceActivity"
-            android:label="@string/source_activity_title" >
-        </activity>
     </application>
     
 </manifest>

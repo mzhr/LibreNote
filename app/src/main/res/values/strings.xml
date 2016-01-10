@@ -5,8 +5,6 @@
     <string name="text_note_activity_title">New Note</string>
     <string name="settings_activity_title">Settings</string>
     <string name="changelog_activity_title">Changelog</string>
-    <string name="license_activity_title">License</string>
-    <string name="source_activity_title">Source Code</string>
 
 
     <!-- Note Activity related Strings -->
@@ -23,9 +21,14 @@
     <string name="actionbar_export">Export Notes</string>
 
     <!-- Main Settings related Strings -->
-    <string name="settings_license">License</string>
+    <string name="settings_current_version">Current Version</string>
+    <string name="settings_current_version_value">0.1</string>
     <string name="settings_changelog">Change Log</string>
     <string name="settings_source">Source Code</string>
+    <string name="settings_source_substring">View on Github</string>
+    <string name="settings_source_link">https://github.com/mzhr/LibreNote</string>
+    <string name="settings_license">License</string>
+    <string name="settings_license_substring">GPLv3</string>
 
     <!-- Strings related to Changelog, Likely to get large, switch to parsing textfile later on. -->
     <string name="changelog_version_title_1">0.1</string>
