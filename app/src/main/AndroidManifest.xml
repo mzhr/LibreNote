@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mzhr.librenote" >
 
-    <uses-sdk android:minSdkVersion="15"
+    <uses-sdk
+        android:minSdkVersion="15"
         android:targetSdkVersion="23" />
 
     <application
@@ -23,8 +24,13 @@
 
         <activity
             android:name=".activities.TextNoteActivity"
-            android:label="@string/text_note_activity_title">
+            android:label="@string/text_note_activity_title" >
+        </activity>
+
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/settings_activity_title" >
         </activity>
     </application>
-
+    
 </manifest>

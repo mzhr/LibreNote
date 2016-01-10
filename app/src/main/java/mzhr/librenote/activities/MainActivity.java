@@ -40,7 +40,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mainactivity_settings, menu);
+        MenuItem actionbarSettings = menu.findItem(R.id.settings_settings);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings_import:
+                return true;
+            case R.id.settings_export:
+                return true;
+            case R.id.settings_settings:
+                Intent newIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(newIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void updateFileList() {
