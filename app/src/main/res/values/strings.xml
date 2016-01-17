@@ -2,7 +2,7 @@
     <!-- Title Strings -->
     <string name="app_name">LibreNote</string>
     <string name="main_activity_title">Notes</string>
-    <string name="text_note_activity_title">New Note</string>
+    <string name="text_note_activity_title">Text Note</string>
     <string name="settings_activity_title">Settings</string>
     <string name="changelog_activity_title">Changelog</string>
 

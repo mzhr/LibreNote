@@ -43,6 +43,10 @@ public class TextNoteActivity extends AppCompatActivity {
              * for control flow, bad practice according to many.
              */
         }
+
+        /* Set cursor to right side of title for default position on opening. */
+        EditText noteTitle = (EditText) findViewById(R.id.textNoteTitle);
+        noteTitle.setSelection(noteTitle.getText().length());
     }
 
     @Override

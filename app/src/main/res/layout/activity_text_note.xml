@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="mzhr.librenote.activities.TextNoteActivity">
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48sp"
         android:id="@+id/textNoteTitle"
         android:hint="@string/text_note_title_default"
+        android:singleLine="true"
+        android:background="#7D7D7D"
+        android:textSize="26sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -21,13 +22,16 @@
         android:layout_alignParentEnd="true" />
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
         android:layout_below="@+id/textNoteTitle"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentStart="true">
 
         <EditText
             android:layout_width="fill_parent"
@@ -36,6 +40,7 @@
             android:hint="@string/text_note_field_default"
             android:ems="10"
             android:id="@+id/textNoteValue"
+            android:background="@null"
             android:layout_below="@+id/textNoteTitle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
