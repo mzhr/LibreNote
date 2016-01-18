@@ -23,8 +23,8 @@
 
     <!-- Main Settings related Strings -->
     <!-- subtext not yet implemneted so information given on main string, fix later -->
-    <string name="settings_current_version">Current Version - 0.1</string>
-    <string name="settings_current_version_value">0.1</string>
+    <string name="settings_current_version">Current Version - 0.3</string>
+    <string name="settings_current_version_value">0.3</string>
     <string name="settings_changelog">Change Log</string>
     <string name="settings_source">Source Code</string>
     <string name="settings_source_substring">View on Github</string>
@@ -38,5 +38,11 @@
     <string name="changelog_version_1_item2">Notes are now listed</string>
     <string name="changelog_version_1_item3">Able to create text notes via the widget added</string>
     <string name="changelog_version_1_item4">Data persistence in Private Mode</string>
-    <string name="changelog_version_1_item5">Able to delete notes by holding note and selecting delete</string>
+    <string name="changelog_version_1_item5">Delete notes with popup menu when holding item</string>
+    <string name="changelog_version_title_2">0.3</string>
+    <string name="changelog_version_2_item1">Actionbar Project settings</string>
+    <string name="changelog_version_2_item2">Settings page with information about project</string>
+    <string name="changelog_version_2_item3">Exporting and Importing</string>
+    <string name="changelog_version_2_item4">\'No Notes\' message set</string>
+    <string name="changelog_version_2_item5">Text Editing page revamped</string>
 </resources>

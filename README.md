@@ -14,23 +14,23 @@ Change Logs
 + Data persistance in Private Mode
 + Able to delete notes by holding note and selecting delete
 
+### 0.3
++ Actionbar options and project information
++ Importing and Exporting options in Actionbar
++ Settings in options
+
 
 Development Roadmap
 -------------------
 
-### 0.3
-+ Actionbar options and project information
-+ Importing and Exporting options in Actionbar
-+ Settings in options including themes
-+ Add to fdroid and playstore
-
 ### 1.0
++ Work on UI/UX and google material design compliance
++ A New Icon
 + Folders for notes and searching
 + Edit history and Dates
++ Polished note listing as cards
 + Custom textstyles for text notes most likely thourgh markdown
 + Actionmode for managing notes and textnote
-+ Polished note listing aswell as card or mixture style listing
-+ Password options for notes, folders or the app
 
 ### 2.0
 + User created notifications
@@ -38,10 +38,10 @@ Development Roadmap
 + Widgets for shortcuts and app
 + Save from other apps or websites
 + Photo, Video, Drawing, File support
++ Password/encrypted options for items or exported files
 
 ### 3.0?
-+ Encrypted importing and exporting
-+ Version Controll <-- May stop here and polish
++ Version Control
 + Calender Integration
 + Syncing with external server such as google account or others
 + ...

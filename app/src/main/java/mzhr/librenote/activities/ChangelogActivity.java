@@ -26,6 +26,15 @@ public class ChangelogActivity extends AppCompatActivity {
         ArrayList<String> changelogWordList = new ArrayList<String>();
 
         /* Add first set of items. */
+        changelogWordList.add(getResources().getString(R.string.changelog_version_title_2));
+        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item1));
+        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item2));
+        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item3));
+        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item4));
+        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item5));
+
+        changelogWordList.add(" ");
+
         changelogWordList.add(getResources().getString(R.string.changelog_version_title_1));
         changelogWordList.add(getResources().getString(R.string.changelog_version_1_item1));
         changelogWordList.add(getResources().getString(R.string.changelog_version_1_item2));
