@@ -1,13 +1,16 @@
 package mzhr.librenote.models;
 
 import android.content.Context;
+import android.os.Environment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 /**
@@ -82,5 +85,32 @@ public class  NoteStorage {
     {
         /* Delete the file of a specific filename. */
         context.deleteFile(name);
+    }
+
+    public void importNotes(Context context)
+    {
+
+    }
+
+    public void exportNotes(Context context)
+    {
+        String[] notes = getNotes(context);
+
+        /* Create LibreNote folder if it doesn't exist. */
+        File baseDir = new File(Environment.getExternalStorageDirectory() + File.separator + "LibreNote");
+        if (!baseDir.exists()) {
+            baseDir.mkdir();
+        }
+
+        for (String note : notes) {
+            String content = getTextNote(context, note);
+            try {
+                File file = new File(Environment.getExternalStorageDirectory() + File.separator + "LibreNote" + File.separator + note);
+                OutputStream outputStream = new FileOutputStream(file);
+                outputStream.write(content.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

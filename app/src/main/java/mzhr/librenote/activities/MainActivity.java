@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.settings_import:
                 return true;
             case R.id.settings_export:
+                NoteStorage storage = new NoteStorage();
+                storage.exportNotes(getApplicationContext());
                 return true;
             case R.id.settings_settings:
                 Intent newIntent = new Intent(MainActivity.this, SettingsActivity.class);
