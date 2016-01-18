@@ -51,11 +51,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        NoteStorage storage = new NoteStorage();
         switch (item.getItemId()) {
             case R.id.settings_import:
+                Toast.makeText(MainActivity.this, "Imported", Toast.LENGTH_SHORT).show();
+                storage.importNotes(getApplicationContext());
+                updateFileList();
                 return true;
             case R.id.settings_export:
-                NoteStorage storage = new NoteStorage();
+                Toast.makeText(MainActivity.this, "Exported", Toast.LENGTH_SHORT).show();
                 storage.exportNotes(getApplicationContext());
                 return true;
             case R.id.settings_settings:

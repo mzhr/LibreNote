@@ -89,7 +89,44 @@ public class  NoteStorage {
 
     public void importNotes(Context context)
     {
+        /* Continue only if the enviorment app directory exists. */
+        File baseDir = new File(Environment.getExternalStorageDirectory() + File.separator + "LibreNote");
+        if (baseDir.exists()) {
+            File[] files = baseDir.listFiles();
+            for (File file : files) {
+                /* Get file content. */
+                FileInputStream inputStream;
+                try {
+                    inputStream = new FileInputStream(file);
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
+                    /* Read the content of the file. */
+                    String line;
+                    StringBuffer buffer = new StringBuffer();
+                    try {
+                        while ((line = reader.readLine()) != null) {
+                            buffer.append(line + "\n");
+                        }
+                    } catch (IOException read_e) {
+                        read_e.printStackTrace();
+                    }
+                    String content = buffer.toString();
+
+                    /* Write files to private app storage. */
+                    try {
+                        FileOutputStream outputStream = context.openFileOutput(file.getName(), Context.MODE_PRIVATE);
+                        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
+                        writer.write(content);
+                        writer.close();
+                    } catch (IOException write_e) {
+                        write_e.printStackTrace();
+                    }
+
+                } catch (IOException open_e) {
+                    open_e.printStackTrace();
+                }
+            }
+        }
     }
 
     public void exportNotes(Context context)
@@ -102,6 +139,7 @@ public class  NoteStorage {
             baseDir.mkdir();
         }
 
+        /* Export all notes in the apps pirvate data to the enviorment folder LibreNotes. */
         for (String note : notes) {
             String content = getTextNote(context, note);
             try {
