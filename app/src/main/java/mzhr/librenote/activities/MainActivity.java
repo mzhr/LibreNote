@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         updateFileList();
+        TextView emptyListText = (TextView)findViewById(R.id.emptyNoteListView);
+        emptyListText.setVisibility(View.INVISIBLE);
+        noteList.setEmptyView(emptyListText);
+        noteList.set
     }
 
     @Override

@@ -19,11 +19,19 @@
         android:layout_alignParentEnd="true"
         tools:listitem="@android:layout/simple_list_item_1" />
 
+    <TextView
+        android:id="@+id/emptyNoteListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:text="@string/empty_list"
+        android:textSize="24sp" />
+
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/newNoteButton"
-        android:layout_alignBottom="@+id/noteList"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="newTextNote"
