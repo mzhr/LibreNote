@@ -15,6 +15,8 @@ import mzhr.librenote.models.NoteStorage;
  */
 public class TextNoteActivity extends AppCompatActivity {
 
+    private String originalTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         /* This function is primarily used to open the view
@@ -40,21 +42,21 @@ public class TextNoteActivity extends AppCompatActivity {
             noteContent.setText(textNote);
         } catch (NullPointerException e) {
             /* Not an exception. Find a fix to using this exception
-             * for control flow, bad practice according to many.
-             */
+             * for control flow, bad practice according to many. */
         }
 
         /* Set cursor to right side of title for default position on opening. */
         EditText noteTitle = (EditText) findViewById(R.id.textNoteTitle);
         noteTitle.setSelection(noteTitle.getText().length());
+        originalTitle = noteTitle.getText().toString();
     }
 
     @Override
     public void onBackPressed()
     {
         /* This function is primarily to save the file and deal with
-         * naming of file.
-         */
+         * naming of file. */
+
         /* Get string value of content of text note from view. */
         NoteStorage noteStorage = new NoteStorage();
         EditText noteText = (EditText)findViewById(R.id.textNoteValue);
@@ -62,36 +64,17 @@ public class TextNoteActivity extends AppCompatActivity {
         String noteValue = noteText.getText().toString();
         String noteTitle = noteName.getText().toString();
 
-        /* Save file if file of name given doesn't exist otherwise give user option
-         * to try again with another filename.
-         */
-        int failCount = 0;
-        boolean failed = false;
-        while (true) {
-            try {
-                /* If file creation has failed before then create a new file with a duplication value on the end of title. */
-                if (failed == true) {
-                    noteStorage.createTextNote(getApplicationContext(), noteTitle + " (" + failCount + ")" , noteValue);
-                } else {
-                    noteStorage.createTextNote(getApplicationContext(), noteTitle, noteValue);
-                }
-                break;
-            } catch (Exception e) {
-                /* If failed, error, attempt loop again except add file number at end. */
-                if (failed == true) {
-                    failCount++;
-                } else {
-                    failed = true;
-                }
-                e.printStackTrace();
-                continue;
-            }
+        try {
+            /* Delete file and save. */
+            noteStorage.removeTextNote(getApplicationContext(), originalTitle);
+            noteStorage.createTextNote(getApplicationContext(), noteTitle, noteValue);
+
+            /* Notify parent activity that this activity finished. Used for updated note page. */
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED, returnIntent);
+            super.onBackPressed();
+        } catch (Exception e) {
+
         }
-
-        /* Notify parent activity that this activity finished. Used for updated note page. */
-        Intent returnIntent = new Intent();
-        setResult(Activity.RESULT_CANCELED, returnIntent);
-
-        super.onBackPressed();
     }
 }

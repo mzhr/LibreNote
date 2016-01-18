@@ -20,12 +20,21 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        /* Creates a selectable list of settings.
+         * for items that have a subtext are currently only using a dash
+         * and putting said subtext on the main item on the list. This will soon
+         * need to be implemented.
+         */
+
+        /* Add Settings items to the list. */
         ListView settingsList = (ListView)findViewById(R.id.settingsList);
         ArrayList<String> settingsWordList = new ArrayList<String>();
         settingsWordList.add(getResources().getString(R.string.settings_current_version));
         settingsWordList.add(getResources().getString(R.string.settings_changelog));
         settingsWordList.add(getResources().getString(R.string.settings_source));
         settingsWordList.add(getResources().getString(R.string.settings_license));
+
+        /* Set adapter and controlls for each setting items. */
         settingsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, settingsWordList));
         settingsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

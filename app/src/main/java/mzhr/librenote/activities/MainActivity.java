@@ -21,25 +21,25 @@ import mzhr.librenote.models.NoteStorage;
 /**
  * Activity of home activity showing initially showing first depth of notes,
  * and can go further through file traversal of user interaction.
- *
- * Two update methods are being used for updating note list, removal
- * of one method should be done at a later time.
  */
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<String> noteNameList;
-    ArrayAdapter<String> noteAdapter;
-    ListView noteList;
+    private ArrayList<String> noteNameList;
+    private ArrayAdapter<String> noteAdapter;
+    private ListView noteList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /* Set the note list. */
         updateFileList();
+
+        /* Show a message if no notes exists. */
         TextView emptyListText = (TextView)findViewById(R.id.emptyNoteListView);
         emptyListText.setVisibility(View.INVISIBLE);
         noteList.setEmptyView(emptyListText);
-        noteList.set
     }
 
     @Override
@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateFileList() {
+        /* Refreshes the note list, by resetting the name array
+         * setting the adapter to the listview everytime it refreshes.
+         * Very inefficient and a resolution should be created soon
+         * to only have to update the adapter.*/
+
         noteList = (ListView)findViewById(R.id.noteList);
         NoteStorage noteStorage = new NoteStorage();
         String[] files = noteStorage.getNotes(getApplicationContext());
