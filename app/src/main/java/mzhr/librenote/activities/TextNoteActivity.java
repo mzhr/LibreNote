@@ -64,6 +64,13 @@ public class TextNoteActivity extends AppCompatActivity {
         String noteValue = noteText.getText().toString();
         String noteTitle = noteName.getText().toString();
 
+        if (noteTitle.length() == 0) {
+            /* Cancle note creation and go back */
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED, returnIntent);
+            super.onBackPressed();
+        }
+
         try {
             /* Delete file and save. */
             noteStorage.removeTextNote(getApplicationContext(), originalTitle);
