@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.settings_import:
                 Toast.makeText(MainActivity.this, "Imported", Toast.LENGTH_SHORT).show();
                 storage.importNotes(getApplicationContext());
-                updateFileList();
+                finish();
+                startActivity(getIntent());
                 return true;
             case R.id.settings_export:
                 Toast.makeText(MainActivity.this, "Exported", Toast.LENGTH_SHORT).show();
