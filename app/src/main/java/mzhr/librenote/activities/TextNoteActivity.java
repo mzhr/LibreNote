@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import mzhr.librenote.R;
@@ -24,6 +25,7 @@ public class TextNoteActivity extends AppCompatActivity {
          */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_note);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* Attempt to get an extra string data which signifies
          * editing an existing file.
@@ -50,10 +52,20 @@ public class TextNoteActivity extends AppCompatActivity {
         noteTitle.setSelection(noteTitle.getText().length());
         originalTitle = noteTitle.getText().toString();
     }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         /* This function is primarily to save the file and deal with
          * naming of file. */
 

@@ -2,6 +2,7 @@ package mzhr.librenote.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -15,6 +16,7 @@ public class ChangelogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* This does not look correct or easy to understand as everything including
          * the version changes and the verion are a seperate item on the list.
@@ -44,6 +46,17 @@ public class ChangelogActivity extends AppCompatActivity {
 
         /* Add adapter to the list. */
         changelogList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, changelogWordList));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
