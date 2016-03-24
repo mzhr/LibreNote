@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import mzhr.librenote.R;
+import mzhr.librenote.adapters.ListSubTextAdapter;
+import mzhr.librenote.models.SubTextItem;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -22,31 +23,31 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /* Creates a selectable list of settings.
-         * for items that have a subtext are currently only using a dash
-         * and putting said subtext on the main item on the list. This will soon
-         * need to be implemented.
-         */
+        /* Creates a selectable list of settings. */
 
         /* Add Settings items to the list. */
-        ListView settingsList = (ListView)findViewById(R.id.settingsList);
-        ArrayList<String> settingsWordList = new ArrayList<String>();
-        settingsWordList.add(getResources().getString(R.string.settings_current_version));
-        settingsWordList.add(getResources().getString(R.string.settings_changelog));
-        settingsWordList.add(getResources().getString(R.string.settings_source));
-        settingsWordList.add(getResources().getString(R.string.settings_license));
+        ArrayList<SubTextItem> settingsList = new ArrayList<SubTextItem>();
+
+        SubTextItem item1 = new SubTextItem("Change Log", "Current Version 0.3");
+        SubTextItem item2 = new SubTextItem("Source Code", "Link to Github - GPLv3");
+
+        settingsList.add(item1);
+        settingsList.add(item2);
 
         /* Set adapter and controlls for each setting items. */
-        settingsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, settingsWordList));
-        settingsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView list = (ListView) findViewById(R.id.settingsList);
+        ListSubTextAdapter adapter = new ListSubTextAdapter(getApplicationContext(), R.layout.sub_text_list, settingsList);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position) {
-                    case 1:
+                    case 0:
                         Intent newIntent = new Intent(SettingsActivity.this, ChangelogActivity.class);
                         startActivity(newIntent);
                         break;
-                    case 2:
+                    case 1:
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.settings_source_link)));
                         startActivity(browserIntent);
                         break;
