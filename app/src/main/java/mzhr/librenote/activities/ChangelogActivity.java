@@ -3,12 +3,13 @@ package mzhr.librenote.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import mzhr.librenote.R;
+import mzhr.librenote.adapters.ListSubTextAdapter;
+import mzhr.librenote.models.SubTextItem;
 
 public class ChangelogActivity extends AppCompatActivity {
 
@@ -17,35 +18,30 @@ public class ChangelogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        /* Add Settings items to the list. */
+        ArrayList<SubTextItem> changelogList = new ArrayList<SubTextItem>();
 
-        /* This does not look correct or easy to understand as everything including
-         * the version changes and the verion are a seperate item on the list.
-         * A fix such as a list under the heading of each version will do but is currently
-         * not implemented.
-         */
+        SubTextItem item1 = new SubTextItem(getResources().getString(R.string.changelog_version_title_2),
+                "- " + getResources().getString(R.string.changelog_version_2_item1) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_2_item2) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_2_item3) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_2_item4) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_2_item5));
+        SubTextItem item2 = new SubTextItem(getResources().getString(R.string.changelog_version_title_1),
+                "- " + getResources().getString(R.string.changelog_version_1_item1) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_1_item2) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_1_item3) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_1_item4) + "\n" +
+                        "- " + getResources().getString(R.string.changelog_version_1_item5));
 
-        ListView changelogList = (ListView)findViewById(R.id.settingsList);
-        ArrayList<String> changelogWordList = new ArrayList<String>();
+        changelogList.add(item1);
+        changelogList.add(item2);
 
-        /* Add first set of items. */
-        changelogWordList.add(getResources().getString(R.string.changelog_version_title_2));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item1));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item2));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item3));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item4));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_2_item5));
-
-        changelogWordList.add(" ");
-
-        changelogWordList.add(getResources().getString(R.string.changelog_version_title_1));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_1_item1));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_1_item2));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_1_item3));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_1_item4));
-        changelogWordList.add(getResources().getString(R.string.changelog_version_1_item5));
-
-        /* Add adapter to the list. */
-        changelogList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, changelogWordList));
+        /* Set adapter and controlls for each setting items. */
+        ListView list = (ListView) findViewById(R.id.settingsList);
+        ListSubTextAdapter adapter = new ListSubTextAdapter(getApplicationContext(), R.layout.sub_text_list, changelogList);
+        list.setAdapter(adapter);
     }
 
     @Override
