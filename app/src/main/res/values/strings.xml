@@ -7,42 +7,42 @@
     <string name="changelog_activity_title">Changelog</string>
 
 
-    <!-- Note Activity related Strings -->
-    <string name="new_note_button">Add Note</string>
+    <!-- Note activity Views -->
     <string name="select_delete">Delete</string>
     <string name="empty_list">No Notes</string>
 
-    <!-- Textnote related Strings -->
-    <string name="text_note_field_default">Start writing...</string>
-    <string name="text_note_title_default">Add Title...</string>
+    <!-- Text note pretexts -->
+    <string name="text_note_field_default">Start writing…</string>
+    <string name="text_note_title_default">Add Title…</string>
 
-    <!-- Main Activity Actionbar related Strings -->
+    <!-- Main Activity Menu names -->
     <string name="actionbar_settings">Settings</string>
     <string name="actionbar_import">Import Notes</string>
     <string name="actionbar_export">Export Notes</string>
 
-    <!-- Main Settings related Strings -->
-    <!-- subtext not yet implemneted so information given on main string, fix later -->
+    <!-- Toasts -->
+    <string name="notes_imported">Imported</string>
+    <string name="notes_exported">Exported</string>
+    <string name="notes_filename_exists">Filename already Exists</string>
+
+    <!-- Settings Menu Items -->
     <string name="settings_current_version">Current Version - 0.3</string>
-    <string name="settings_current_version_value">0.3</string>
     <string name="settings_changelog">Change Log</string>
     <string name="settings_source">Source Code</string>
-    <string name="settings_source_substring">View on Github</string>
+    <string name="settings_source_substring">View on Github - GPLv3</string>
     <string name="settings_source_link">https://github.com/mzhr/LibreNote</string>
-    <string name="settings_license">License - GPLv3</string>
-    <string name="settings_license_substring">GPLv3</string>
 
-    <!-- Strings related to Changelog, Likely to get large, switch to parsing textfile later on. -->
-    <string name="changelog_version_title_1">0.1</string>
-    <string name="changelog_version_1_item1">Base project created with GPL License</string>
-    <string name="changelog_version_1_item2">Notes are now listed</string>
-    <string name="changelog_version_1_item3">Able to create text notes via the widget added</string>
-    <string name="changelog_version_1_item4">Data persistence in Private Mode</string>
-    <string name="changelog_version_1_item5">Delete notes with popup menu when holding item</string>
-    <string name="changelog_version_title_2">0.3</string>
-    <string name="changelog_version_2_item1">Actionbar Project settings</string>
-    <string name="changelog_version_2_item2">Settings page with information about project</string>
-    <string name="changelog_version_2_item3">Exporting and Importing</string>
-    <string name="changelog_version_2_item4">\'No Notes\' message set</string>
-    <string name="changelog_version_2_item5">Text Editing page revamped</string>
+    <!-- Changelog Items, Likely to get large, switch to parsing a text file later on. -->
+    <string name="changelog_1_title">0.1</string>
+    <string name="changelog_1_item1">Base project created with GPL License</string>
+    <string name="changelog_1_item2">Notes are now listed</string>
+    <string name="changelog_1_item3">Able to create text notes via the widget added</string>
+    <string name="changelog_1_item4">Data persistence in Private Mode</string>
+    <string name="changelog_1_item5">Delete notes with popup menu when holding item</string>
+    <string name="changelog_2_title">0.3</string>
+    <string name="changelog_2_item1">Actionbar Project settings</string>
+    <string name="changelog_2_item2">Settings page with information about project</string>
+    <string name="changelog_2_item3">Exporting and Importing</string>
+    <string name="changelog_2_item4">\'No Notes\' message set</string>
+    <string name="changelog_2_item5">Text Editing page revamped</string>
 </resources>

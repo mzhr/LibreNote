@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2015 Mazhar Morshed
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package mzhr.librenote.activities;
 
 import android.content.Intent;
@@ -9,34 +26,38 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-
 import mzhr.librenote.R;
 import mzhr.librenote.adapters.ListSubTextAdapter;
-import mzhr.librenote.models.SubTextItem;
+import mzhr.librenote.models.SubtextItem;
 
+import java.util.ArrayList;
+
+
+/**
+ * Activity for the settings page.
+ */
 public class SettingsActivity extends AppCompatActivity {
 
+    /** writes out all the list items using maintext/subtext blocks. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /* Creates a selectable list of settings. */
 
         /* Add Settings items to the list. */
-        ArrayList<SubTextItem> settingsList = new ArrayList<SubTextItem>();
+        ArrayList<SubtextItem> settingsList = new ArrayList<SubtextItem>();
 
-        SubTextItem item1 = new SubTextItem("Change Log", "Current Version 0.3");
-        SubTextItem item2 = new SubTextItem("Source Code", "Link to Github - GPLv3");
+        SubtextItem item1 = new SubtextItem(getResources().getString(R.string.settings_changelog), getResources().getString(R.string.settings_current_version));
+        SubtextItem item2 = new SubtextItem(getResources().getString(R.string.settings_source), getResources().getString(R.string.settings_source_substring));
 
         settingsList.add(item1);
         settingsList.add(item2);
 
-        /* Set adapter and controlls for each setting items. */
-        ListView list = (ListView) findViewById(R.id.settings_list);
-        ListSubTextAdapter adapter = new ListSubTextAdapter(getApplicationContext(), R.layout.sub_text_list, settingsList);
+        /* Set adapter and listener for each setting items. */
+        ListView list = (ListView) findViewById(R.id.list_view);
+        ListSubTextAdapter adapter = new ListSubTextAdapter(getApplicationContext(), R.layout.subtext_view, settingsList);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,6 +77,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    /** Implements back button for actionbar back button. */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="60dp" android:padding="10dp">
+    android:layout_height="@dimen/dimen_margin" android:padding="@dimen/dimen_margin">
 
     <TextView
-        android:id="@+id/settings_item_main_text"
+        android:id="@+id/subtext_main"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:textColor="#000000"
+        android:textColor="@color/color_grey_700"
         android:textSize="16sp"
         android:gravity="center_vertical"/>
 
     <TextView
-        android:id="@+id/settings_item_sub_text"
+        android:id="@+id/subtext_sub"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:textColor="#6D6D6D"/>
+        android:textColor="@color/color_grey_500"/>
 
 </LinearLayout>

@@ -10,10 +10,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/app_theme" >
 
         <activity
-            android:name=".activities.NoteListActivity"
+            android:name="mzhr.librenote.activities.NoteListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,17 +22,17 @@
         </activity>
 
         <activity
-            android:name=".activities.TextNoteActivity"
+            android:name=".activities.EditNoteActivity"
             android:label="@string/text_note_activity_title" >
         </activity>
 
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name="mzhr.librenote.activities.SettingsActivity"
             android:label="@string/settings_activity_title" >
         </activity>
 
         <activity
-            android:name=".activities.ChangelogActivity"
+            android:name="mzhr.librenote.activities.ChangelogActivity"
             android:label="@string/changelog_activity_title" >
         </activity>
     </application>

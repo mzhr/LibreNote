@@ -3,34 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mzhr.librenote.activities.TextNoteActivity">
+    tools:context=".activities.EditNoteActivity">
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="34sp"
-        android:id="@+id/textNoteTitle"
+        android:id="@+id/text_note_title"
         android:hint="@string/text_note_title_default"
         android:singleLine="true"
-        android:background="#7D7D7D"
+        android:background="@color/color_grey_300"
         android:textSize="18sp"
         android:textAlignment="center"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_below="@+id/textNoteTitle"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:layout_alignParentLeft="true"
+        android:id="@+id/scroll_view"
+        android:layout_below="@+id/text_note_title"
+        android:padding="@dimen/dimen_margin"
+        android:paddingTop="0dp"
         android:layout_alignParentStart="true">
 
         <EditText
@@ -40,11 +35,8 @@
             android:hint="@string/text_note_field_default"
             android:textSize="14sp"
             android:ems="10"
-            android:id="@+id/textNoteValue"
-            android:background="@null"
-            android:layout_below="@+id/textNoteTitle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:id="@+id/text_note_value"
+            android:background="@null"/>
     </ScrollView>
 
 

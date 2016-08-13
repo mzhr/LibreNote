@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2015 Mazhar Morshed
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package mzhr.librenote.models;
 
 import android.content.Context;
@@ -18,15 +35,15 @@ import java.io.OutputStreamWriter;
  */
 public class  NoteStorage {
 
+    /** Get a String array of all files in the app directory. */
     public String[] getNotes(Context context)
     {
-        /* Get a name list of all files in the app directory. */
         return context.fileList();
     }
 
+    /** Creates a new text note and throws a new exception if it already exists. */
     public void createTextNote(Context context, String name, String content) throws Exception
     {
-        /* This function creates a new text note and throws a new exception if it already exists. */
         try {
             context.openFileInput(name);
             throw new Exception("Cannot create file. File with same name already exists.");
@@ -38,11 +55,9 @@ public class  NoteStorage {
         }
     }
 
+    /** Read a file of the given file name and return content. */
     public String getTextNote(Context context, String name) {
-        /* Read a file of the given file name and return content. */
-
         /* Get and open the file. */
-        FileInputStream inputStream;
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new InputStreamReader(context.openFileInput(name)));
@@ -52,23 +67,21 @@ public class  NoteStorage {
 
         /* Read the content of the file. */
         String line;
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         try {
             while ((line = reader.readLine()) != null) {
                 buffer.append(line + "\n");
             }
-        } catch (IOException read_e) {
+        } catch (Exception read_e) {
             read_e.printStackTrace();
         }
-        String content = buffer.toString();
 
-        return content;
+        return buffer.toString();
     }
 
+    /** Write content to the text note, replacing its old contents with new content. */
     public boolean editTextNote(Context context, String name, String content)
     {
-        /* Write content to the text note, replacing its old contents with new
-           content. */
         try {
             FileOutputStream outputStream = context.openFileOutput(name, Context.MODE_PRIVATE);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
@@ -81,12 +94,13 @@ public class  NoteStorage {
         return true;
     }
 
+    /** Delete the file of a specific filename. */
     public void removeTextNote(Context context, String name)
     {
-        /* Delete the file of a specific filename. */
         context.deleteFile(name);
     }
 
+    /** Add all notes that don't exist in the note list, to the note list. */
     public void importNotes(Context context)
     {
         /* Continue only if the enviorment app directory exists. */
@@ -129,6 +143,7 @@ public class  NoteStorage {
         }
     }
 
+    /** Write all notes to a LibreNotes directory on the homefolder. */
     public void exportNotes(Context context)
     {
         String[] notes = getNotes(context);
