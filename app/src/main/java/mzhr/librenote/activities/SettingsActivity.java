@@ -35,7 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
         settingsList.add(item2);
 
         /* Set adapter and controlls for each setting items. */
-        ListView list = (ListView) findViewById(R.id.settingsList);
+        ListView list = (ListView) findViewById(R.id.settings_list);
         ListSubTextAdapter adapter = new ListSubTextAdapter(getApplicationContext(), R.layout.sub_text_list, settingsList);
         list.setAdapter(adapter);
 
@@ -54,7 +54,6 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     @Override
