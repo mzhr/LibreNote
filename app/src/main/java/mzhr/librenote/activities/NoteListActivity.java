@@ -36,6 +36,7 @@ import mzhr.librenote.models.NoteStorage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -45,7 +46,7 @@ import java.util.List;
  */
 public class NoteListActivity extends AppCompatActivity {
 
-    private NoteStorage storage = new NoteStorage();
+    private NoteStorage storage;
 
     private RecyclerView noteRecyclerView;
     private RecyclerView.Adapter noteAdapter;
@@ -59,12 +60,16 @@ public class NoteListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_list);
 
+        storage = new NoteStorage();
+        storage.createInternalNoteFolder(getApplicationContext());
+
         /* Set the note list */
         noteData = new ArrayList<String>();
 
         /* Get all file names */
         String[] noteNameArray = storage.getNotes(getApplicationContext());
         noteData.addAll(Arrays.asList(noteNameArray));
+        Collections.sort(noteData);
 
         noteRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         noteRecyclerView.hasFixedSize();
@@ -139,6 +144,7 @@ public class NoteListActivity extends AppCompatActivity {
         /* Reload the Recyclerview */
         String[] noteNameArray = storage.getNotes(getApplicationContext());
         noteData.addAll(Arrays.asList(noteNameArray));
+        Collections.sort(noteData);
         noteAdapter = new NoteAdapter(noteData, getApplicationContext());
         noteRecyclerView.setAdapter(noteAdapter);
 
